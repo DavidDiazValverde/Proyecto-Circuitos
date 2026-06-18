@@ -83,9 +83,7 @@ def main(page: ft.Page):
             texto_variables_listas.value = f"Valores ingresados correctamente"
             
     #SUMA DE LAS PRIMERAS VARIABLES (PRUEBA)
-            resultado_final = formulas.VLmásFmásFp(
-                vl_input, f_input, fp_input, geometria_input
-            )
+            resultado_final = formulas.SumaTotal(vl_input, f_input, fp_input)
             page.add(ft.Text(value=f"Suma: {resultado_final}"))
             
             
