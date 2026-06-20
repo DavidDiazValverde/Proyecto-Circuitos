@@ -47,7 +47,7 @@ def calcular_datos_carga(datos):
     fp = datos.get("fp", None)
 
     # Validación al menos dos datos
-    datos_presentes = [x for x in [P, Q, S, fp] if x is not None]]
+    datos_presentes = [x for x in [P, Q, S, fp] if x is not None]
     if len(datos_presentes)<2:
         raise ValueError("Debes ingresar al menos dos parámetros entre P,Q,S,fp")
     #Caso 1: P y fp
@@ -72,11 +72,19 @@ def calcular_datos_carga(datos):
         fp = P/S
     #Caso 6 Q y fp:
     elif Q is not None and fp is not None:
-        
+        denom = np.sqrt(1-fp**2)
+        P = (fp*abs(Q))/denom
+        S = np.sqrt(P**2+Q**2)
 
     #Retorna salida con el diccionario completo
-
-    return 
+    resultado = {
+        "nombre": nombre,
+        "P":P,
+        "Q": Q,
+        "S":S,
+        "fp":fp
+    }
+    return resultado
 
 def calcular_totales(lista_cargas):
     #Suma todas las cargas ingresadas y
