@@ -1,9 +1,9 @@
 import numpy as np
 
 
-def SumaTotal(vl, f, fp):
+"""xdef SumaTotal(vl, f, fp):
     suma = vl + f + fp
-    return suma
+    return suma"""
 
 
 #Funciones para el sistema
@@ -47,14 +47,32 @@ def calcular_datos_carga(datos):
     fp = datos.get("fp", None)
 
     # Validación al menos dos datos
-    
+    datos_presentes = [x for x in [P, Q, S, fp] if x is not None]]
+    if len(datos_presentes)<2:
+        raise ValueError("Debes ingresar al menos dos parámetros entre P,Q,S,fp")
     #Caso 1: P y fp
-
+    if P is not None and fp is not None:
+        S = P /fp
+        Q= np.sqrt(S**2-P**2)
     #Caso 2: P y Q
-
-    #Caso 3: S y fp
-
-    #Caso 4: S y Q
+    elif P is not None and Q is not None:
+        S = np.sqrt(P**2+Q**2)
+        fp = P/S
+    #Caso 3: P y S
+    elif P is not None and S is not None:
+        Q = np.sqrt(S**2-P**2)
+        fp = P/S
+    #Caso 4: S y fp
+    elif S is not None and fp is not None:
+        P = S * fp
+        Q = np.sqrt(S**2-P**2)
+    #Caso 5: S y Q
+    elif S is not None and Q is not None:
+        P = np.sqrt(S**2-Q**2)
+        fp = P/S
+    #Caso 6 Q y fp:
+    elif Q is not None and fp is not None:
+        
 
     #Retorna salida con el diccionario completo
 
