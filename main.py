@@ -1,13 +1,26 @@
 import flet as ft
 import os
 from interfaz import logo
+import sys
+
+def get_resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except AttributeError:
+        # Si no estamos en un .exe, usamos el directorio actual
+        base_path = os.path.dirname(os.path.abspath(__file__))
+    
+    return os.path.join(base_path, relative_path)
+
 
 if __name__ == "__main__":
-    # Directorio donde se encuentra este archivo (para los assets)
-    carpeta_recursos = os.path.dirname(__file__)
+    #función para obtener la ruta correcta del logo
+    logo_path = get_resource_path("logo.png")
     
-    # Ejecutamos la aplicación con la función logo como punto de entrada
-    ft.app(target=logo, assets_dir=carpeta_recursos)
+    #carpeta de assets
+    assets_dir = os.path.dirname(logo_path)
+    
+    ft.app(target=logo, assets_dir=assets_dir)
 
     #actualmente este documento hace lo mismo que si se corriera interfaz.py, pero es necesario para 
     #poder ejecutar la app desde un archivo .exe
