@@ -10,4 +10,4 @@ if __name__ == "__main__":
     ft.app(target=logo, assets_dir=carpeta_recursos)
 
     #actualmente este documento hace lo mismo que si se corriera interfaz.py, pero es necesario para 
-    # poder ejecutar la app desde un archivo .exe
+    #poder ejecutar la app desde un archivo .exe
