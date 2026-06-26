@@ -7,12 +7,13 @@ from  tabla_cargas import crear_seccion_cargas
 async def logo(page: ft.Page):
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+    page.clean()
     
     logo_img = ft.Image(src="logo.png", height=page.height)
     page.add(logo_img)
     page.update()                                                                                                                              
     await asyncio.sleep(1)                                                    
-    page.controls.clear()   
+    page.clean()   
     await main(page)  # Llama a la función main para mostrar la interfaz principal                                                  
     page.update()
    
@@ -21,6 +22,7 @@ async def main(page: ft.Page):
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.title = "Parámetros del Sistema"
+    page.scroll = ft.ScrollMode.AUTO
     #--------------------V_L----------------------------
 
     def validar_tension(e):
@@ -194,8 +196,11 @@ async def main(page: ft.Page):
 #-----------------------Resultados-----------------------------
 
 def resultados(page: ft.Page, datos_sistema: dict):
+    page.clean()
     page.title = "Resultados del Sistema"
     page.vertical_alignment = ft.MainAxisAlignment.START
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+    page.scroll = ft.ScrollMode.AUTO
     
     totales = datos_sistema["totales"]
     
@@ -232,7 +237,7 @@ def resultados(page: ft.Page, datos_sistema: dict):
     
     # Botón para regresar
     async def volver_inicio(e):
-        page.controls.clear()
+        page.clean()
         await main(page)
         page.update()
 
@@ -246,6 +251,7 @@ def resultados(page: ft.Page, datos_sistema: dict):
         ft.Divider(height=20, color="transparent"),
         ft.Row([btn_volver], alignment=ft.MainAxisAlignment.CENTER)
     )
+    page.update()
 
 
 if __name__ == "__main__":
