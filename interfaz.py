@@ -237,7 +237,7 @@ async def main(page: ft.Page):
             texto_variables_listas.color = "red"
             page.update()
 
-    # Botón que usa tu lógica de verificación
+    # Botón de verificación
     texto_variables_listas = ft.Text(value="")
     boton_calcular = ft.Button(content="Calcular", on_click=verificar)
     page.add(boton_calcular, texto_variables_listas)
