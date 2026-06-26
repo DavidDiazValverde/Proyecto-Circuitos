@@ -3,13 +3,25 @@ import formulas
 import os
 import asyncio
 from  tabla_cargas import crear_seccion_cargas
+import sys
+
+def get_resource_path(relative_path):
+    """Obtiene la ruta correcta para archivos tanto en desarrollo como en .exe"""
+    try:
+        # PyInstaller crea una carpeta temporal y guarda la ruta en _MEIPASS
+        base_path = sys._MEIPASS
+    except AttributeError:
+        # Si no estamos en un .exe, usamos el directorio actual
+        base_path = os.path.dirname(os.path.abspath(__file__))
+    
+    return os.path.join(base_path, relative_path)
 
 async def logo(page: ft.Page):
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.clean()
     
-    logo_img = ft.Image(src="logo.png", height=page.height)
+    logo_img = ft.Image(src=get_resource_path("logo.png"), height=page.height)
     page.add(logo_img)
     page.update()                                                                                                                              
     await asyncio.sleep(1)                                                    

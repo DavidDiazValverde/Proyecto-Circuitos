@@ -14,12 +14,8 @@ def get_resource_path(relative_path):
 
 
 if __name__ == "__main__":
-    #función para obtener la ruta correcta del logo
     logo_path = get_resource_path("logo.png")
-    
-    #carpeta de assets
     assets_dir = os.path.dirname(logo_path)
-    
     ft.app(target=logo, assets_dir=assets_dir)
 
     #actualmente este documento hace lo mismo que si se corriera interfaz.py, pero es necesario para 
