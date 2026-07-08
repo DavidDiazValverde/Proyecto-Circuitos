@@ -29,7 +29,7 @@ Aplicación de escritorio desarrollada con Python y Flet para calcular compensac
 ## Forma 1 (mas sencilla)
 1. Entra al repositorio https://github.com/DavidDiazValverde/Proyecto-Circuitos
 2. Ve a la seccion de releases y selecciona la version mas nueva
-3. Seleccion el archivo Laydocap.exe y descargalo
+3. Selecciona el archivo Laydocap.exe y descargalo
 4. Disfruta de la aplicación
 
 ## Forma 2 (más extensa, en caso de que la forma 1 falle)
