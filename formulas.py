@@ -118,3 +118,4 @@ def procesar_sistema_completo(Vlinea, f, fp_deseado, config, lista_cargas_brutas
         "capacitancia_fase": C,
         "fp_deseado": fp_deseado
     }
+    #con esto estarían los cambios
