@@ -62,14 +62,15 @@ async def crear_seccion_cargas(page: ft.Page, lista_cargas_datos: list):
                 page.update() 
                 return
             
-            if p1 == p2:
-                error_carga.value = "Los parámetros deben ser diferentes."
+            try:
+                val1 = float(input_val1.value)
+                val2 = float(input_val2.value)
+            except ValueError:
+                error_carga.value = "Valores numéricos inválidos. Usa números (ej: 100, 0.85)."
                 page.update()
-                return
+                return  
 
-            val1 = float(input_val1.value)
-            val2 = float(input_val2.value)
-
+            
             error_carga.value = "" 
 
             nombre_carga = nombre  # Guardamos el nombre en una variable separada
