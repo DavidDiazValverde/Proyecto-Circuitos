@@ -75,7 +75,7 @@ def necesidad_compensacion(totales, fp_deseado):
 def calcular_capacitancia(Qc, Vlinea, f, configuracion):
     """Calcula la capacitancia por fase requerida."""
     w = 2 * np.pi * f
-    Qc_fase = QC /3
+    Qc_fase = Qc /3
     if configuracion.lower() == "estrella":
         V = Vlinea / np.sqrt(3)
         C = Qc_fase / (V**2 * w)
